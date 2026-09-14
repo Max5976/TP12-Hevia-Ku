@@ -2,12 +2,12 @@ const jwt = require("jsonwebtoken");
 
 function signToken(user) {
   return jwt.sign(
-    { role: user.role },
-    process.env.JWT_SECRETT || "super-secret",
-    { expiresIn: "2s" }
+    { id: user.id, email: user.email, role: user.role },
+    process.env.JWT_SECRET || "super-secret",
+    { expiresIn: "1h" }
   );
 }
 
-module.export = {
+module.exports = {
   signToken
 };
